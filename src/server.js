@@ -16,14 +16,6 @@ app.use("/", Router);
 const start = async () => {
     try {
 
-        // axios.put('http://134.117.130.17:3000/searchengines',{request_url: 'http://134.117.135.62:3000'})
-        //     .then((response) => {
-        //         console.log(response.data);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        // });
-
         await connectToDatabase();
 
         console.log("\nStarting the server...")
