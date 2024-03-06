@@ -1,0 +1,26 @@
+html
+  head
+    title= page.title
+  body
+    include ../partials/header
+
+    h1 Title: 
+      | #{page.title}
+    h3 Page URL: 
+      a(href=page.url) #{page.url}
+    h2 Incoming links to this page:
+    ul
+      each link in page.incomingLinks
+        li 
+          a(href=link)  #{link}
+    h2 Outgoing links to this page:
+    ul
+      each link in page.outgoingLinks
+        li 
+          a(href=link)  #{link}
+    h2 Word Frequency:
+    ul
+      each freq, word in page.wordFreq
+        li #{word} : #{freq}
+
+    include ../partials/footer

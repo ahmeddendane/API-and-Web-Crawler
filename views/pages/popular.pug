@@ -1,0 +1,12 @@
+html
+  head
+    title Popular
+  body
+    include ../partials/header
+    h1 Top 10 most popular #{route} pages
+    each page in sortedarray
+      - let id = page.id
+      a(href="/"+route+"/"+id) #{page.title}
+      |&nbsp;&nbsp;Number Of Incoming Links: #{page.numberoflinks}
+      br
+    include ../partials/footer

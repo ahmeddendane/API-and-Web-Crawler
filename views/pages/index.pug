@@ -1,0 +1,66 @@
+html
+  head
+    title COMP 4601A Fall 2023 - Assignment #01
+    //- script.
+    //-   function hideButton() {
+    //-     document.getElementById('crawlButton').style.display = 'none';
+    //-   }
+    script.
+      // change the form action based on select option
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('searchForm');
+        const select = document.getElementById('website');
+
+        select.addEventListener('change', function() {
+          if (select.value === 'fruits') {
+            form.action = '/fruits';
+          } else {
+            form.action = '/personal'; 
+          }
+        });
+      });
+  body
+    include ../partials/header
+
+    div#main
+      h1 Welcome to the Assignment #01 Home Page 
+      a(href='/crawl', onclick='hideButton()')
+        button(id='crawlButton', type='button') Start Fruits Crawl
+      | 
+      a(href='/crawlPersonal', onclick='hideButton()')
+        button(id='crawlButton1', type='button') Start Personal Crawl
+      | 
+      br
+      a(href='/fruits/index')
+        button(id='indexButton', type='button') Start Fruits Index
+      | 
+      a(href='/personal/index')
+        button(id='indexButton1', type='button') Start Personal Index
+      | 
+      br
+      a(href='/fruits/rank')
+        button(id='rankButton', type='button') Start Fruits PageRank
+      | 
+      a(href='/personal/rank') 
+        button(id='rankButton1', type='button') Start Personal PageRank 
+      br
+      | 
+      form(action="/fruits" id="searchForm", method="GET" , enctype="text/plain")
+        br
+        input(type="text" , name="q", id="q") 
+        input(type="submit", value="Search", formmethod="get", style="height:20px; width:60px")
+        br
+        | Boost: 
+        select(name="boost", id="boost") 
+          option(value="false") Off
+          option(value="true") On
+        | 
+        | Limit: 
+        input(type="number" , name="limit", id="limit", value="10", min="1" , max="50", step="1") 
+      | Website: 
+      select(name="website", id="website") 
+        option(value="fruits") Fruits
+        option(value="personal") Personal
+      | 
+    
+    include ../partials/footer

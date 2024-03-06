@@ -1,0 +1,1 @@
+export { FruitPage, PersonalPage } from './PageModel.js';

@@ -1,0 +1,17 @@
+html
+  head
+    title Search Results
+  body
+    include ../partials/header
+    h1 Search Results:
+    br
+    each page, index in top_10
+      - let id = page.page.id
+      |#{index+1}.
+      a(href="/"+route+"/"+id) #{page.page.title}
+      |&nbsp;
+      | - Url: #{page.page.url}
+      | - Score: #{page.score}
+      | - PageRank: #{page.page.rank}
+      br
+    include ../partials/footer
